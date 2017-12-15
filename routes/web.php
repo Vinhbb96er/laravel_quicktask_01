@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('changelanguage/{language}', 'ProcessController@changeLanguage');
+
+Route::group(['middleware' => 'lang'], function() {
+    Route::resource('/task', 'TaskController');
 });
